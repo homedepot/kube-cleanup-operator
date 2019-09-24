@@ -18,10 +18,10 @@ Some defaults:
 ```
 # remember to change namespace in RBAC manifests for monitoring namespaces other than "default"
 
-kubectl create -f https://raw.githubusercontent.com/lwolf/kube-cleanup-operator/master/deploy/rbac.yaml
+kubectl create -f https://raw.githubusercontent.com/devorbitus/kube-cleanup-operator/master/deploy/rbac.yaml
 
 # create deployment
-kubectl create -f https://raw.githubusercontent.com/lwolf/kube-cleanup-operator/master/deploy/deployment.yaml
+kubectl create -f https://raw.githubusercontent.com/devorbitus/kube-cleanup-operator/master/deploy/deployment.yaml
 
 
 kubectl logs -f $(kubectl get pods --namespace default -l "run=cleanup-operator" -o jsonpath="{.items[0].metadata.name}")
