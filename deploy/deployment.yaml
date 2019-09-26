@@ -22,7 +22,9 @@ spec:
     spec:
       serviceAccountName: cleanup-operator
       containers:
-      - image: quay.io/lwolf/kube-cleanup-operator
+      - args:
+        - -keep-successful=1
+        image: quay.io/lwolf/kube-cleanup-operator
         imagePullPolicy: Always
         name: cleanup-operator
         resources:
