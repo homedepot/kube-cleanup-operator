@@ -7,6 +7,8 @@
 Experimental Kubernetes Operator to automatically delete completed Jobs and their Pods.
 Controller listens for changes in Pods created by Jobs and deletes it on Completion.
 
+In `/deploy/deployment.yaml` the current settings reflect that failed jobs are deleted after 72 hours, and successful jobs are deleted after 1 hour. 
+
 Some defaults:
 * All Namespaces are monitored by default
 * Only Pods created by Jobs are monitored
@@ -18,10 +20,10 @@ Some defaults:
 ```
 # remember to change namespace in RBAC manifests for monitoring namespaces other than "default"
 
-kubectl create -f https://raw.githubusercontent.com/jmfulgham/kube-cleanup-operator/master/deploy/rbac.yaml
+kubectl create -f https://raw.githubusercontent.com/homedepot/kube-cleanup-operator/master/deploy/rbac.yaml
 
 # create deployment
-kubectl create -f https://raw.githubusercontent.com/jmfulgham/kube-cleanup-operator/master/deploy/deployment.yaml
+kubectl create -f https://raw.githubusercontent.com/homedepot/kube-cleanup-operator/master/deploy/deployment.yaml
 
 
 kubectl logs -f $(kubectl get pods --namespace default -l "run=cleanup-operator" -o jsonpath="{.items[0].metadata.name}")
